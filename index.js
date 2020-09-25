@@ -11,9 +11,38 @@ const itemPrice = document.getElementById('item-price')
 document.addEventListener('DOMContentLoaded', () => {
     fetchItems()
     itemForm.addEventListener('submit', handleFormSubmit)
+    itemList.addEventListener('click', handleListClick)
 })
 
+function handleListClick(e) {
 
+   if (e.target.className === "delete") {
+       let id = e.target.dataset.id
+       deleteItem(id)
+      
+   }
+}
+
+function deleteItem(id) {
+    /// delete form Dom
+    let item = document.getElementById(`item-${id}`)
+    item.remove()
+    /// delete form backend 
+    let configObj = {
+        method: 'DELETE',
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+        }
+    }
+    fetch(`http://localhost:3000/items/${id}`, configObj) 
+    .then (resp => resp.json())
+    .then (res => {
+       alert(ja)
+    })
+}
+
+/// Add new laptop to Dom and Api
 function handleFormSubmit(e) {
     e.preventDefault()
 
@@ -37,11 +66,12 @@ function handleFormSubmit(e) {
     .then (res => {
         addItemToDom(res.data)
     })
+    itemForm.reset()
 }
 
 
 
-
+///// Add laptops to Dom
 
 function fetchItems() {
     fetch('http://localhost:3000/items')
@@ -53,17 +83,18 @@ function addItems(response) {
     response.data.forEach( item => {
         addItemToDom(item)
     })
+
 }
 
 
 function addItemToDom(item){
     itemList.innerHTML += `
-    <div id="item-${item.id}>
+    <div id="item-${item.id}">
     <li>
-    $<span class="price">${item.attributes.price}</span>
     <strong class="name">${item.attributes.name}</strong>:
     <span class="description">${item.attributes.description}</span>
+    $<span class="price">${item.attributes.price}</span>
     </li>
-    </div>
-    `
+    <button class="delete" data-id="${item.id}"> Delete </button>
+    </div>`
 }
