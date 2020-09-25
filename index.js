@@ -6,6 +6,8 @@ const itemPrice = document.getElementById('item-price')
 
 
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchItems()
     itemForm.addEventListener('submit', handleFormSubmit)
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function handleFormSubmit(e) {
     e.preventDefault()
-    debugger;
+
     let newObj = {
         name: itemName.value,
         description: itemDescription.value, 
@@ -26,9 +28,15 @@ function handleFormSubmit(e) {
         headers: {
             "Content-Type": "application/json",
             Accept: "application/json"
-        }, 
-        body: Json.stringify
+        },
+        body: JSON.stringify(newObj)
     }
+
+    fetch('http://localhost:3000/items', configObj) 
+    .then (resp => resp.json())
+    .then (res => {
+        addItemToDom(res.data)
+    })
 }
 
 
