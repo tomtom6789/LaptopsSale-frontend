@@ -14,14 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
     itemList.addEventListener('click', handleListClick)
 })
 
-function handleListClick(e) {
+function handleListClick(e){
+    if (e.target.className === "delete"){
+        let id = e.target.dataset.id
+         deleteItem(id)
+    
+     } 
+ }
 
-   if (e.target.className === "delete") {
-       let id = e.target.dataset.id
-       deleteItem(id)
-      
-   }
-}
+
+
 
 function deleteItem(id) {
     /// delete form Dom
@@ -38,7 +40,7 @@ function deleteItem(id) {
     fetch(`http://localhost:3000/items/${id}`, configObj) 
     .then (resp => resp.json())
     .then (res => {
-       alert(ja)
+       alert(res.message)
     })
 }
 
@@ -96,5 +98,10 @@ function addItemToDom(item){
     $<span class="price">${item.attributes.price}</span>
     </li>
     <button class="delete" data-id="${item.id}"> Delete </button>
+    <button class="update" date-id="${item.id}"> Update </button>
     </div>`
 }
+
+
+
+
