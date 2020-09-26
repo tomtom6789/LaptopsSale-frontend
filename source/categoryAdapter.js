@@ -22,7 +22,6 @@ class CategoryAdapter {
         let category = new Category({id: resp.id, ...resp.attributes})
         category.displayToDom()
 
-        
     }
 
 }

@@ -9,9 +9,7 @@ class Category{
 
         this.element = document.createElement('li')
         this.element.id = `category-${id}`
-
         this.categoryList = document.getElementById('category-list')
- 
 
         Category.all.push(this)
     }
@@ -25,25 +23,34 @@ class Category{
         return this.element   
     }
 
+    items(){
+        return Item.all.filter((item) => item.category_id == this.id)
+    
+    }
+
+
     displayToDom(){
         this.categoryList.append(this.renderList())
         this.addEventListeners()
-       
-      
     }
 
 
     addEventListeners(){
         this.element.addEventListener('click', this.displayItems)
- 
     }
 
     
+    displayItems = () => {
+        
+        currentCategory =  this 
+        document.getElementById('item-list').innerHTML = ``
+        let items = this.items()
+        items.forEach((e) => {
+            e.displayToDom()
+        })
         
 
-    displayItems() {
-        // debugger;
-        console.log("ASdAS")
+      
     }
 
     

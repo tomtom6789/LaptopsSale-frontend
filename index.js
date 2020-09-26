@@ -1,16 +1,19 @@
-const itemList = document.getElementById('item-list')
+// const itemList = document.getElementById('item-list')
+
+// const itemName = document.getElementById('item-name')
+// const itemDescription = document.getElementById('item-description')
+// const itemPrice = document.getElementById('item-price')
 const itemForm = document.getElementById('item-form')
-const itemName = document.getElementById('item-name')
-const itemDescription = document.getElementById('item-description')
-const itemPrice = document.getElementById('item-price')
 const itemsAdapter = new ItemsAdapter
 const categoryAdapter = new CategoryAdapter
+let currentCategory
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
     categoryAdapter.fetchCategories()
     itemsAdapter.fetchItems()
-    itemForm.addEventListener('submit', handleFormSubmit)
+    itemForm.addEventListener('submit', itemsAdapter.createItem)
     // itemList.addEventListener('click', handleListClick)
 })
 
@@ -45,28 +48,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /// Add new laptop to Dom and Api
-function handleFormSubmit(e) {
-    e.preventDefault()
-    let newObj = {
-        name: itemName.value,
-        description: itemDescription.value, 
-        price: itemPrice.value 
-    }
-    let configObj = {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        },
-        body: JSON.stringify(newObj)
-    }
-    fetch('http://localhost:3000/items', configObj) 
-    .then (resp => resp.json())
-    .then (res => {
-        addItemToDom(res.data)
-    })
-    itemForm.reset()
-}
+// function handleFormSubmit(e) {
+//     e.preventDefault()
+//     let newObj = {
+//         name: itemName.value,
+//         description: itemDescription.value, 
+//         price: itemPrice.value 
+//     }
+//     let configObj = {
+//         method: 'POST',
+//         headers: {
+//             "Content-Type": "application/json",
+//             Accept: "application/json"
+//         },
+//         body: JSON.stringify(newObj)
+//     }
+//     fetch('http://localhost:3000/items', configObj) 
+//     .then (resp => resp.json())
+//     .then (res => {
+//         addItemToDom(res.data)
+//     })
+//     itemForm.reset()
+// }
 
 
 
@@ -115,51 +118,51 @@ function handleFormSubmit(e) {
      
 //  }
  
- function displayUpdate(item){
+//  function displayUpdate(item){
     
-    document.querySelector(`#item-${item.id} li .name`).innerText = item.attributes.name 
-    document.querySelector(`#item-${item.id} li .description`).innerText = item.attributes.description
-    document.querySelector(`#item-${item.id} li .price`).innerText = item.attributes.price 
- }
+//     document.querySelector(`#item-${item.id} li .name`).innerText = item.attributes.name 
+//     document.querySelector(`#item-${item.id} li .description`).innerText = item.attributes.description
+//     document.querySelector(`#item-${item.id} li .price`).innerText = item.attributes.price 
+//  }
 
- function addUpdateItemFields(itemId) {
-    let item = document.querySelector(`#item-${itemId} li`)
-    let price = document.querySelector(`#item-${itemId} li .price`).innerHTML
-    let description = document.querySelector(`#item-${itemId} li .description`).innerHTML
-    let name = document.querySelector(`#item-${itemId} li .name`).innerHTML
+//  function addUpdateItemFields(itemId) {
+//     let item = document.querySelector(`#item-${itemId} li`)
+//     let price = document.querySelector(`#item-${itemId} li .price`).innerHTML
+//     let description = document.querySelector(`#item-${itemId} li .description`).innerHTML
+//     let name = document.querySelector(`#item-${itemId} li .name`).innerHTML
     
-    let updateForm = `
-    <input type="text" value="${name}" name="name" id="update-${itemId}-forname">
-    <input type="text" value="${description}" name="name" id="update-${itemId}-fordescription">
-    <input type="number" value="${price}" name="price" id="update-${itemId}-forprice">
-    `
-    let formDiv = document.createElement('div')
-    formDiv.id = `update-form-${itemId}`
-    formDiv.innerHTML = updateForm
-    item.append(formDiv)
+//     let updateForm = `
+//     <input type="text" value="${name}" name="name" id="update-${itemId}-forname">
+//     <input type="text" value="${description}" name="name" id="update-${itemId}-fordescription">
+//     <input type="number" value="${price}" name="price" id="update-${itemId}-forprice">
+//     `
+//     let formDiv = document.createElement('div')
+//     formDiv.id = `update-form-${itemId}`
+//     formDiv.innerHTML = updateForm
+//     item.append(formDiv)
    
- }
+//  }
 
 
 //// Delete Fetch 
-function deleteItem(id) {
-    /// delete form Dom
-    let item = document.getElementById(`item-${id}`)
-    item.remove()
-    /// delete form backend 
-    let configObj = {
-        method: 'DELETE',
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        }
-    }
-    fetch(`http://localhost:3000/items/${id}`, configObj) 
-    .then (resp => resp.json())
-    .then (res => {
-       alert(res.message)
-    })
-}
+// function deleteItem(id) {
+//     /// delete form Dom
+//     let item = document.getElementById(`item-${id}`)
+//     item.remove()
+//     /// delete form backend 
+//     let configObj = {
+//         method: 'DELETE',
+//         headers: {
+//             "Content-Type": "application/json",
+//             Accept: "application/json"
+//         }
+//     }
+//     fetch(`http://localhost:3000/items/${id}`, configObj) 
+//     .then (resp => resp.json())
+//     .then (res => {
+//        alert(res.message)
+//     })
+// }
 
 
 
