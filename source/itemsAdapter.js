@@ -1,5 +1,4 @@
 /// all fetches here 
-
 class ItemsAdapter {
 
     constructor() {

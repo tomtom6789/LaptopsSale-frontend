@@ -4,13 +4,14 @@ const itemName = document.getElementById('item-name')
 const itemDescription = document.getElementById('item-description')
 const itemPrice = document.getElementById('item-price')
 const itemsAdapter = new ItemsAdapter
-
+const categoryAdapter = new CategoryAdapter
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    categoryAdapter.fetchCategories()
     itemsAdapter.fetchItems()
     itemForm.addEventListener('submit', handleFormSubmit)
-    itemList.addEventListener('click', handleListClick)
+    // itemList.addEventListener('click', handleListClick)
 })
 
 //Add laptops to Dom
@@ -70,22 +71,22 @@ function handleFormSubmit(e) {
 
 
 /////// Update 
-function handleListClick(e){
-    if (e.target.className === "delete"){
-        let id = e.target.dataset.id
-         deleteItem(id)
-    } else if (e.target.className === "update"){
-        let itemId = e.target.dataset.id
-        e.target.className = "save"
-        e.target.innerText = "Save"
-        addUpdateItemFields(itemId)
-    } else if (e.target.className === "save"){
-        let itemId = e.target.dataset.id 
-        e.target.className = "update"
-        e.target.innerText = "Update"
-        itemsAdapter.fetchUpdateRequest(itemId)
-     } 
- }
+// function handleListClick(e){
+//     if (e.target.className === "delete"){
+//         let id = e.target.dataset.id
+//          deleteItem(id)
+//     } else if (e.target.className === "update"){
+//         let itemId = e.target.dataset.id
+//         e.target.className = "save"
+//         e.target.innerText = "Save"
+//         addUpdateItemFields(itemId)
+//     } else if (e.target.className === "save"){
+//         let itemId = e.target.dataset.id 
+//         e.target.className = "update"
+//         e.target.innerText = "Update"
+//         itemsAdapter.fetchUpdateRequest(itemId)
+//      } 
+//  }
 //  function fetchUpdateRequest(itemId) {
 //      let updateName = document.getElementById(`update-${itemId}-forname`)
 //      let updateDescription = document.getElementById(`update-${itemId}-fordescription`)

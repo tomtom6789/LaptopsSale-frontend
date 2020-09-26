@@ -2,8 +2,9 @@
  <head>
         <meta charset="utf-8">
          <title>Latop store</title>
+         <link rel="stylesheet" href="index.css" />
          <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-         
+         </head>
     <body>
         <h3>Add a new Laptop:</h3>
         <form id="item-form">
@@ -17,17 +18,25 @@
         </form>
 
         <h1>Our Laptop store</h1>
- 
-        <ul id="item-list">
+    
+        <div class="row">
+            <div class="column">
+                <h2> Brands:</h2>
+                <ul id="category-list">
+                </ul>
+            </div>
+            <div class="column">
+                <h2>Laptops:</h2>
+                <ul id="item-list">
+                </ul>
+            </div>
+        </div>
 
-
-        </ul>
       
-        
-        <script src="source/item.js" type="text/javascript"></script>
-        <script src="source/itemsAdapter.js" type="text/javascript"></script>
         <script src="source/category.js" type="text/javascript"></script>
         <script src="source/categoryAdapter.js" type="text/javascript"></script>
+        <script src="source/item.js" type="text/javascript"></script>
+        <script src="source/itemsAdapter.js" type="text/javascript"></script>
         <script src="index.js" type="text/javascript"></script>
     </body>
 </html>
