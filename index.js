@@ -83,36 +83,36 @@ function handleListClick(e){
         let itemId = e.target.dataset.id 
         e.target.className = "update"
         e.target.innerText = "Update"
-        fetchUpdateRequest(itemId)
+        itemsAdapter.fetchUpdateRequest(itemId)
      } 
  }
- function fetchUpdateRequest(itemId) {
-     let updateName = document.getElementById(`update-${itemId}-forname`)
-     let updateDescription = document.getElementById(`update-${itemId}-fordescription`)
-     let updatePrice = document.getElementById(`update-${itemId}-forprice`)
+//  function fetchUpdateRequest(itemId) {
+//      let updateName = document.getElementById(`update-${itemId}-forname`)
+//      let updateDescription = document.getElementById(`update-${itemId}-fordescription`)
+//      let updatePrice = document.getElementById(`update-${itemId}-forprice`)
 
-     let updateObj = {
-         name: updateName.value, 
-         description: updateDescription.value, 
-         price: updatePrice.value 
-     }
+//      let updateObj = {
+//          name: updateName.value, 
+//          description: updateDescription.value, 
+//          price: updatePrice.value 
+//      }
 
-     let configUpdateObj = {
-         method: "PATCH", 
-         headers: {
-             "Content-Type": "application/json", 
-             "Accepts": "application.json"
-         },
-         body: JSON.stringify(updateObj)
-     }
-     fetch(`http://localhost:3000/items/${itemId}`, configUpdateObj)
-     .then(res => res.json())
-     .then(data => displayUpdate(data.data))
+//      let configUpdateObj = {
+//          method: "PATCH", 
+//          headers: {
+//              "Content-Type": "application/json", 
+//              "Accepts": "application.json"
+//          },
+//          body: JSON.stringify(updateObj)
+//      }
+//      fetch(`http://localhost:3000/items/${itemId}`, configUpdateObj)
+//      .then(res => res.json())
+//      .then(data => displayUpdate(data.data))
   
-     let form = document.getElementById(`update-form-${itemId}`)
-     form.remove()
+//      let form = document.getElementById(`update-form-${itemId}`)
+//      form.remove()
      
- }
+//  }
  
  function displayUpdate(item){
     

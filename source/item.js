@@ -35,9 +35,11 @@ class Item{
     }  
 
 
-    displayUpdate(name,description,price){
+
+    displayUpdate({name,description,price}){
         this.name = name
         this.description = description
-        this.price = price   
+        this.price = price 
+        this.renderList()
      }
 }
