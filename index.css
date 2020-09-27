@@ -1,5 +1,32 @@
 
-.column {
-    float: left;
-    width: 50%;
-  }
+input[type=submit] {
+  width: 10%;
+  background-color: #4CAF50;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+} 
+
+body {
+  background-color: lightblue;
+}
+
+
+
+
+
+.wrap {
+  width:800px;
+  margin:0 auto;
+}
+.left_col {
+  float:left;
+  width:300px;
+}
+.right_col {
+  float:right;
+  width:300px;
+}

@@ -9,12 +9,14 @@ class Category{
 
         this.element = document.createElement('li')
         this.element.id = `category-${id}`
+
         this.categoryList = document.getElementById('category-list')
 
         Category.all.push(this)
     }
 
 
+  
 
     renderList() {
         this.element.innerHTML = `
@@ -41,7 +43,6 @@ class Category{
 
     
     displayItems = () => {
-        
         currentCategory =  this 
         document.getElementById('item-list').innerHTML = ``
         let items = this.items()

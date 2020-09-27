@@ -12,8 +12,7 @@ class ItemsAdapter {
     .then(array => {
        
         array.data.forEach((e) => {
-           new Item(e.attributes)
-        //    item.displayToDom()
+        new Item(e.attributes)
         })
     })
 }
@@ -98,25 +97,22 @@ class ItemsAdapter {
         fetch('http://localhost:3000/items', configObj) 
         .then (resp => resp.json())
         .then (res => {
-            // let category = Category.find(res.data.attributes.category_id);
-            let category = Category.find(res.data.attributes.category_id)
-
+            let category = Category.all.find(c => c.id == res.data.attributes.category_id)
+         
             if(!category) {
                 category = new Category({
-                    id: res.data.attributes.id,
-                    name: res.data.attributes.name 
+                    id: res.data.attributes.category_id,
+                    name: res.data.attributes.category_name   
                 })
-                category.displayToDom();
+                category.displayToDom();           
             }
-
-            debugger;
-
-
+                // Category is require to add to dom
             let item = new Item(res.data.attributes);
             if (!!currentCategory && currentCategory.id == item.category_id) {
                 item.displayToDom();
             }
         })
+
         itemForm.reset();
     }
     

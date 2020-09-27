@@ -61,8 +61,8 @@ class Item{
          `
         <li>
         <strong class="name">${this.name}</strong>:
-        <span class="description">${this.description}</span>
-        $<span class="price">${this.price}</span>
+         <span class="description">${this.description}</span>
+         $<span class="price">${this.price}</span>
         </li>
         <button class="delete" data-id="${this.id}">Delete</button>
         <button class="update" data-id="${this.id}">Update</button>

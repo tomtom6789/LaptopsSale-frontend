@@ -1,44 +1,65 @@
 <!DOCTYPE html>
- <head>
-        <meta charset="utf-8">
-         <title>Latop store</title>
-         <link rel="stylesheet" href="index.css" />
-         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
-         </head>
-    <body>
-        <h3>Add a new Laptop:</h3>
+<html>
+  <head>
+    <title>LaptopsSales</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="index.css" />
+  </head>
+ <body>
+
+
+
+
+
+    <div class="text-center">
+        <h3>Add a new Laptop for Sale </h3>
         <form id="item-form">
             <label for="item-name">Name:</label>
-            <input type="text" name="name" id="item-name"><br><br>
+            <input type="text" name="name" id="item-name" required ><br><br>
             <label for="item-description">Description:</label>
-            <input type="text" name="description" id="item-description"><br><br>
+            <input type="text" name="description" id="item-description" required ><br><br>
             <label for="item-category">Category:</label>
-            <input type="text" name="category" id="item-category"><br><br>
+            <input type="text" name="category" id="item-category" required ><br><br>
             <label for="item-price">Price:</label>
-            <input type="number" name="price" id="item-price" min="0" step=".01"><br><br>
+            <input type="number" name="price" id="item-price" required ><br><br>
             <input type="submit" value="Create">
         </form>
-
-        <h1>Our Laptop store</h1>
+    </div>
+<br>
+  <body class="text-center" >
+    <h1>Laptop For Sales</h1>
     
-        <div class="row">
-            <div class="column">
-                <h2> Brands:</h2>
-                <ul id="category-list">
-                </ul>
-            </div>
-            <div class="column">
-                <h2>Laptops:</h2>
-                <ul id="item-list">
-                </ul>
-            </div>
+    <div class="wrap">
+        <div class="left_col">
+            <h2> Brands</h2>
+            <ul id="category-list">
+            </ul>
         </div>
+        <div class="right_col">
+            <h3 id="laptops" class="center">Laptops</h3>
+            <ul id="item-list">
+            </ul>
+        </div>
+    </div>
+    </body>
+
+
+    <script src="source/category.js" type="text/javascript"></script>
+    <script src="source/categoryAdapter.js" type="text/javascript"></script>
+    <script src="source/item.js" type="text/javascript"></script>
+    <script src="source/itemsAdapter.js" type="text/javascript"></script>
+    <script src="index.js" type="text/javascript"></script>
+  
+  </body>
+  </html>
+  
+
+
+
+
+
+
 
       
-        <script src="source/category.js" type="text/javascript"></script>
-        <script src="source/categoryAdapter.js" type="text/javascript"></script>
-        <script src="source/item.js" type="text/javascript"></script>
-        <script src="source/itemsAdapter.js" type="text/javascript"></script>
-        <script src="index.js" type="text/javascript"></script>
-    </body>
-</html>
+       
